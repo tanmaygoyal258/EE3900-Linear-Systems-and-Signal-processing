@@ -136,7 +136,6 @@ Download all python codes from
 \begin{lstlisting}
 https://github.com/tanmaygoyal258/EE3900-Linear-Systems-and-Signal-processing/blob/main/GateAssignment1/code.py
 \end{lstlisting}
-
 Download all latex codes from 
 \begin{lstlisting}
 https://github.com/tanmaygoyal258/EE3900-Linear-Systems-and-Signal-processing/blob/main/GateAssignment1/main.tex
@@ -154,8 +153,23 @@ The system is:
     \item Non-Linear and Time-invariant
 \end{enumerate}
 \section{Solution}
-A necessary and sufficient condition for the linearity of a system is to check if it follows the Principle of Superposition, i.e Law of Additivity and Law of Homogeneity.
-
+\begin{definition}
+We say that a system is\textbf{ linear} if and only if it follows the Principle of Superposition, i.e Law of Additivity and Law of Homogeneity.
+\label{L}
+\end{definition}
+\begin{definition}
+A system is said to be \textbf{time invariant} if the output signal does not depend on the absolute time, i.e a time delay on the input signal directly equates to the delay in the output signal.
+\label{T}
+\end{definition}
+\begin{lemma}
+The system relating the input signal $x(t$) and output signal $y(t)$, given by 
+\begin{align}
+     y(t) = \int_{t-T}^tx(u)\,du
+\end{align}
+is linear and time invariant in nature.
+\end{lemma}
+\begin{proof} 
+From \eqref{L}, we can say the system is linear if it follows both the laws of Additivity and Homogeneity.\\
 \underline{Law of Additivity:}\\
 Let the two input signals be $x_1(t)$ and $x_2(t)$, and their corresponding output signals be $y_1(t)$ and $y_2(t)$, then:
 \begin{align}
@@ -191,7 +205,7 @@ Thus, the Law of Homogeneity holds.\\
 
 Since both the Laws hold, the system satisfies the Principle of Superposition, and is thus, a \textbf{linear system}.\\
 
-To check for time-invariance, we would introduce a delay of $t_0$ in the output and input signals.\\
+From \eqref{T} , to check for time-invariance, we would introduce a delay of $t_0$ in the output and input signals.\\
 Delay in output signal:
 \begin{align}
     y(t-t_0) = \int_{t-t_0-T}^{t-t_0} x(u)\,du
@@ -237,4 +251,6 @@ The correct option is \textbf{2) Linear and Time-invariant}
  \includegraphics[width=\columnwidth]{graphs/time_invariance.png}
  \caption{Time invariance}
  \end{figure}
+\end{proof}
+
 \end{document}
