@@ -225,7 +225,36 @@ Clearly, from \eqref{4} and \eqref{5}:
     y'(t) = y(t-t_0)
 \end{align}
 Thus, the system is \textbf{time-invariant}.\\
-The correct option is \textbf{2) Linear and Time-invariant}
+The correct option is \textbf{2) Linear and Time-invariant}\\
+
+Since the given system is an LTI system, it would possess an impulse response $h(t)$, which is the output of the system when the input signal is the Impulse function, given by $\delta(t)$. Thus,
+\begin{align}
+    h(t) = \int_{t-T}^{t} \delta(u)du
+\end{align}
+The Impulse function can be loosely defined as:
+\begin{align}
+    \delta(t) = 
+    \begin{cases}
+\infty & t = 0\\
+0 & otherwise
+\end{cases}
+and \int_{-\infty}^\infty \delta(t)dt  = 1
+\end{align}
+Since the Impulse function is zero everywhere aside from $t = 0$ , the non-zero value of integration is a result of $\delta(0)$. Thus, we can say $h(t)$ will be non-zero only if the limits of integration would include $t=0$, i.e:
+\begin{align}
+    h(t) = 
+    \begin{cases}
+    \int_{t-T}^{t} \delta(u)du & t-T<0 ; t>0\\
+    0 & otherwise
+    \end{cases}
+    \end{align}
+    \begin{align}
+h(t) = 
+    \begin{cases}
+    1 & 0<t<T\\
+    0 & otherwise
+    \end{cases}
+\end{align}
 \begin{figure}[!ht]
 \centering
  \includegraphics[width=\columnwidth]{graphs/input_signals.png}
