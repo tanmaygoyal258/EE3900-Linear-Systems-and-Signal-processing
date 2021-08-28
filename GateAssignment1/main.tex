@@ -254,6 +254,80 @@ h(t) =
     1 & 0<t<T\\
     0 & otherwise
     \end{cases}
+    \label{H}
+\end{align}
+The unit step signal, $u(t)$, is given by:
+\begin{align}
+    u(t) = 
+    \begin{cases}
+    1 & t\geq0\\
+    0 & otherwise
+    \end{cases}
+    \label{u(t)}
+\end{align}
+On time-shifting $u(t)$ by T, we get:
+\begin{align}
+     u(t - T) = 
+    \begin{cases}
+    1 & t-T\geq 0\\
+    0 & otherwise
+    \end{cases}
+    = 
+    \begin{cases}
+    1 & t\geq T\\
+    0 & otherwise
+    \end{cases}
+    \label{u(t-T)}
+\end{align}
+On subtracting \eqref{u(t)} and \eqref{u(t-T)}, we get our impulse response $h(t)$ in terms of the unit step signal:
+\begin{align}
+    h(t) = u(t) - u(t-T)
+\end{align}
+The unit rectangular signal, $rect(t)$ is given by:
+\begin{align}
+    rect(t) = 
+    \begin{cases}
+    1 & \frac{-1}{2} \geq t \geq \frac{1}{2} \\
+    0 & otherwise
+    \end{cases}
+\end{align}
+We can obtain the impulse response $h(t)$ in terms of $rect(t)$ using time scaling and shifting as follows:
+\begin{align}
+    rect(Tt) = 
+    \begin{cases}
+    1 & \frac{-T}{2} \geq Tt \geq \frac{T}{2} \\
+    0 & otherwise
+    \end{cases}\\
+    rect(Tt + \frac{T}{2}) = 
+    \begin{cases}
+    1 & 0 \geq Tt + \frac{T}{2} \geq T \\
+    0 & otherwise
+    \end{cases}
+     = h(t)
+\end{align}
+Let the Fourier Transform of $h(t)$ be given by $H(\omega)$,i.e
+\begin{align}
+    h(t)\fourier H(\omega)\\
+    H(\omega) = \int_{-\infty}^\infty h(t)e^{-j\omega t}\,dt
+    \label{Fourier}
+\end{align}
+From \eqref{H}, we can write \eqref{Fourier} as:
+\begin{align}
+    H(\omega) = \int_{-\infty}^0 0\,dt + \int_0^T e^{-j\omega t}\,dt + \int_T^\infty 0\,dt\\
+     = \frac{1 - e^{-j\omega T}}{j\omega}\\
+      = \frac{1-\cos{\omega T} + j\sin{\omega T}}{j \omega}\\
+       = \frac{2\sin^2(\frac{\omega T}{2}) + 2j\sin(\frac{\omega T}{2})\cos(\frac{\omega T}{2})}{j\omega}\\
+        = \frac{2\sin(\frac{\omega T}{2})}{\omega} \brak{\frac{\sin(\frac{\omega T}{2}) + j\cos(\frac{\omega T}{2})}{j}}\\
+         = T e^{-j \omega \frac{T}{2}}\times \frac{\sin(\frac{\omega T}{2})}{\frac{\omega T}{2}} \\
+          = T e^{-j\omega\frac{T}{2}} sinc(\frac{wT}{2})
+\end{align}
+where $sinc(t)$, the sampling function is defined as:
+\begin{align}
+    sinc(t) = 
+    \begin{cases}
+    1 & t = 0\\
+    \frac{\sin(t)}{t} & otherwise
+    \end{cases}
 \end{align}
 \begin{figure}[!ht]
 \centering
