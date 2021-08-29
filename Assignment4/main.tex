@@ -173,6 +173,30 @@ Thus, we can say that the moving path of the point $\vec{x}$, and hence, the equ
 \begin{align}
     \myvec{3 & 2}\vec{x} = \frac{-11}{6}
 \end{align}
+In general, we can obtain the following lemma:
+\begin{lemma}
+Given the two following parallel lines:
+\begin{align}
+    a\vec{n}^T\vec{x} - c_1 = 0\\
+    b\vec{n}^T\vec{x} - c_2 = 0
+\end{align}
+The line equidistant from both parallel lines would be given by:
+\begin{align}
+    \vec{n}^T\vec{x} - \frac{\frac{c_1}{a} + \frac{c_2}{b}}{2} = 0
+\end{align}
+\end{lemma}
+\begin{proof}
+Consider a point $\vec{x}$ equidistant from both parallel lines, then:
+\begin{align}
+    \frac{\abs{a\vec{n}^T\vec{x} - c_1}}{\norm{a\vec{n}}} = 
+    \frac{\abs{b\vec{n}^T\vec{x} - c_2}}{\norm{b\vec{n}}}\\
+      \frac{\abs{a\vec{n}^T\vec{x} - c_1}}{\abs{a}} = 
+    \frac{\abs{b\vec{n}^T\vec{x} - c_2}}{\abs{b}}\\
+      \abs{ab\vec{n}^T\vec{x} - bc_1} = \abs{ab\vec{n}^T\vec{x} - ac_2}\\
+      2ab\vec{n}^T\vec{x} - bc_1 - ac_2 = 0\\
+       \vec{n}^T\vec{x} - \frac{\frac{c_1}{a} + \frac{c_2}{b}}{2} = 0
+\end{align}
+\end{proof}
 \begin{figure}[!ht]
 \centering
  \includegraphics[width=\columnwidth]{graph.png}
