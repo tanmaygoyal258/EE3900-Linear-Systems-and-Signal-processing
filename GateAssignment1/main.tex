@@ -287,7 +287,7 @@ The unit rectangular signal, $rect(t)$ is given by:
 \begin{align}
     rect(t) = 
     \begin{cases}
-    1 & \frac{-1}{2} \geq t \geq \frac{1}{2} \\
+    1 & \frac{-1}{2} \leq t \leq \frac{1}{2} \\
     0 & otherwise
     \end{cases}
 \end{align}
@@ -295,31 +295,31 @@ We can obtain the impulse response $h(t)$ in terms of $rect(t)$ using time scali
 \begin{align}
     rect(Tt) = 
     \begin{cases}
-    1 & \frac{-T}{2} \geq Tt \geq \frac{T}{2} \\
+    1 & \frac{-T}{2} \leq t \leq \frac{T}{2} \\
     0 & otherwise
     \end{cases}\\
     rect(Tt + \frac{T}{2}) = 
     \begin{cases}
-    1 & 0 \geq Tt + \frac{T}{2} \geq T \\
+    1 &  0 \leq t \leq T\\
     0 & otherwise
     \end{cases}
      = h(t)
 \end{align}
-Let the Fourier Transform of $h(t)$ be given by $H(\omega)$,i.e
+Let the Fourier Transform of $h(t)$ be given by $H(f)$,i.e
 \begin{align}
-    h(t)\fourier H(\omega)\\
-    H(\omega) = \int_{-\infty}^\infty h(t)e^{-j\omega t}\,dt
+    h(t)\fourier H(f)\\
+    H(f) = \int_{-\infty}^\infty h(t)e^{-j2\pi f t}\,dt
     \label{Fourier}
 \end{align}
 From \eqref{H}, we can write \eqref{Fourier} as:
 \begin{align}
-    H(\omega) = \int_{-\infty}^0 0\,dt + \int_0^T e^{-j\omega t}\,dt + \int_T^\infty 0\,dt\\
-     = \frac{1 - e^{-j\omega T}}{j\omega}\\
-      = \frac{1-\cos{\omega T} + j\sin{\omega T}}{j \omega}\\
-       = \frac{2\sin^2(\frac{\omega T}{2}) + 2j\sin(\frac{\omega T}{2})\cos(\frac{\omega T}{2})}{j\omega}\\
-        = \frac{2\sin(\frac{\omega T}{2})}{\omega} \brak{\frac{\sin(\frac{\omega T}{2}) + j\cos(\frac{\omega T}{2})}{j}}\\
-         = T e^{-j \omega \frac{T}{2}}\times \frac{\sin(\frac{\omega T}{2})}{\frac{\omega T}{2}} \\
-          = T e^{-j\omega\frac{T}{2}} sinc(\frac{wT}{2})
+    H(f) = \int_{-\infty}^0 0\,dt + \int_0^T e^{-j2\pi f t}\,dt + \int_T^\infty 0\,dt\\
+     = \frac{1 - e^{-j2\pi f T}}{j2\pi f}\\
+      = \frac{1-\cos{2\pi f T} + j\sin{2\pi f T}}{j 2\pi f}\\
+       = \frac{2\sin^2(\pi f T) + 2j\sin(\pi f T)\cos(\pi f T)}{j2 \pi f}\\
+        = \frac{2\sin(\pi f T)}{2\pi f} \brak{\frac{\sin(\pi f T) + j\cos(\pi f t)}{j}}\\
+         = T e^{-j \pi f T}\times \frac{\sin(\pi f T)}{\pi f T} \\
+          = T e^{-j\pi f T} sinc(\pi f T)
 \end{align}
 where $sinc(t)$, the sampling function is defined as:
 \begin{align}
