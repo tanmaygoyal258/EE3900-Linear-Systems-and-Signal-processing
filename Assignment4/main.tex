@@ -153,10 +153,11 @@ Given the two following parallel lines:
 \begin{align}
     a\vec{n}^T\vec{x} - c_1 = 0\\
     b\vec{n}^T\vec{x} - c_2 = 0
+    \label{ref}
 \end{align}
 The line equidistant from both parallel lines would be given by:
 \begin{align}
-    \vec{n}^T\vec{x} - \frac{\frac{c_1}{a} + \frac{c_2}{b}}{2} = 0
+    \vec{n}^T\vec{x} - \frac{1}{2}\brak{{\frac{c_1}{a} + \frac{c_2}{b}}} = 0
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -173,32 +174,31 @@ Consider a point $\vec{x}$ equidistant from both parallel lines, then:
     \frac{\abs{b\vec{n}^T\vec{x} - c_2}}{\abs{b}}\\
       \abs{ab\vec{n}^T\vec{x} - bc_1} = \abs{ab\vec{n}^T\vec{x} - ac_2}\\
       2ab\vec{n}^T\vec{x} - bc_1 - ac_2 = 0\\
-       \vec{n}^T\vec{x} - \frac{\frac{c_1}{a} + \frac{c_2}{b}}{2} = 0
-\end{align}
+      \vec{n}^T\vec{x} - \frac{1}{2}\brak{{\frac{c_1}{a} + \frac{c_2}{b}}} = 0
+      \label{ans}
+      \end{align}
 \end{proof}
 
 
 The two given parallel lines can be written as:
 \begin{align}
-    \myvec{9 & 6}\vec{x} - 7 = 0\\
+    3\myvec{3 & 2}\vec{x} - 7 = 0\\
     \myvec{3 & 2}\vec{x} + 6 = 0
 \end{align}
-Since $\vec{x}$ is equidistant from both lines, we can write:
+On comparing the equations with
+\eqref{ref},
 \begin{align}
-    \frac{\abs{\myvec{9 & 6}\vec{x} - 7}}{\norm{\myvec{9\\6}}} = \frac{\abs{\myvec{3 & 2}\vec{x} + 6}}{\norm{\myvec{3\\2}}}\\
-    \frac{\abs{\myvec{9 & 6}\vec{x} - 7}}{3} = \abs{\myvec{3 & 2}\vec{x} + 6}\\
-   \abs{\myvec{9 & 6}\vec{x} - 7} = \abs{\myvec{9 & 6}\vec{x} + 18}
+    \vec{n} = \myvec{3 & 2}\\
+    a = 3\\
+    b = 1\\
+    c_1 = 7\\
+    c_2 = -6
 \end{align}
-On further simplifcation, we get:
+On substituting these values into \eqref{ans},
 \begin{align}
-      \myvec{18 & 12}\vec{x} = -11\\
-   \myvec{3 & 2}\vec{x} = \frac{-11}{6}
-\end{align}
-Thus, we can say that the moving path of the point $\vec{x}$, and hence, the equidistant line is given by 
-\begin{align}
-    \myvec{3 & 2}\vec{x} = \frac{-11}{6}
-\end{align}
-
+    \myvec{3 & 2}\vec{x} - \frac{1}{2}\brak{\frac{7}{3} - 6} = 0\\
+    \myvec{3 & 2}\vec{x} - \frac{11}{6} = 0
+\end{align} 
 \begin{figure}[!ht]
 \centering
  \includegraphics[width=\columnwidth]{graph.png}
