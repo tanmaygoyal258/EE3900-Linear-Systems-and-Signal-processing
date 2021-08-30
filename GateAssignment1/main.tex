@@ -290,36 +290,57 @@ The unit rectangular signal, $rect(t)$ is given by:
     1 & \frac{-1}{2} \leq t \leq \frac{1}{2} \\
     0 & otherwise
     \end{cases}
+    \label{rect}
 \end{align}
 We can obtain the impulse response $h(t)$ in terms of $rect(t)$ using time scaling and shifting as follows:
 \begin{align}
-    rect(Tt) = 
+    rect\brak{\frac{t}{\tau}} = 
     \begin{cases}
-    1 & \frac{-T}{2} \leq t \leq \frac{T}{2} \\
+    1 & \frac{-1}{2} \leq \frac{t}{\tau} \leq  \frac{1}{2}\\
     0 & otherwise
-    \end{cases}\\
-    rect(Tt + \frac{T}{2}) = 
+    \end{cases}
+     = 
+     \begin{cases}
+     1 & \frac{-\tau}{2} \leq t \leq  \frac{\tau}{2}\\
+    0 & otherwise
+     \end{cases}
+    \end{align}
+    Subsituting $\tau = T$:
+    \begin{align}
+    rect\brak{\frac{t}{T}} = 
+    \begin{cases}
+    1 & \frac{-T}{2} \leq t \leq \frac{T}{2}\\
+    0 & otherwise
+    \end{cases}
+    \end{align}
+    Now, we want to right-shift the signal by $\frac{T}{2}$:
+    \begin{align}
+    rect\brak{\frac{1}{T}\brak{t - \frac{T}{2}}} = 
     \begin{cases}
     1 &  0 \leq t \leq T\\
     0 & otherwise
     \end{cases}
      = h(t)
 \end{align}
-Let the Fourier Transform of $h(t)$ be given by $H(f)$,i.e
+Since the time shifting is to be performed on the variable $t$ and not $\frac{t}{T}$\\
+
+Let the Fourier Transform of $h(t)$ be given by $H(f)$ and of the rectangular signal, $rect(t)$ be given by $Y(f)$.
 \begin{align}
-    h(t)\fourier H(f)\\
-    H(f) = \int_{-\infty}^\infty h(t)e^{-j2\pi f t}\,dt
+    h(t) \fourier H(f)\\
+    rect(t) \fourier Y(f)
+    \end{align}
+    Then,
+    \begin{align}
+    Y(f) = \int_{-\infty}^\infty rect(t)e^{-j2\pi f t}\,dt
     \label{Fourier}
 \end{align}
-From \eqref{H}, we can write \eqref{Fourier} as:
+From \eqref{rect}, we can write \eqref{Fourier} as:
 \begin{align}
-    H(f) = \int_{-\infty}^0 0\,dt + \int_0^T e^{-j2\pi f t}\,dt + \int_T^\infty 0\,dt\\
-     = \frac{1 - e^{-j2\pi f T}}{j2\pi f}\\
-      = \frac{1-\cos{2\pi f T} + j\sin{2\pi f T}}{j 2\pi f}\\
-       = \frac{2\sin^2(\pi f T) + 2j\sin(\pi f T)\cos(\pi f T)}{j2 \pi f}\\
-        = \frac{2\sin(\pi f T)}{2\pi f} \brak{\frac{\sin(\pi f T) + j\cos(\pi f t)}{j}}\\
-         = T e^{-j \pi f T}\times \frac{\sin(\pi f T)}{\pi f T} \\
-          = T e^{-j\pi f T} sinc(\pi f T)
+   Y(f) = \int_{-\infty}^\frac{-1}{2} 0\,dt + \int_{\frac{-1}{2}}^\frac{1}{2} e^{-j2\pi ft}\,dt + \int_\frac{1}{2}^\infty 0\,dt\\
+    = \frac{e^{j\pi f} - e^{-j \pi f}}{j2\pi f}\\
+     = \frac{2j\sin{\pi f}}{j2\pi f}\\
+      = \frac{\sin (\pi f)}{\pi f}\\
+       = sinc(\pi f)
 \end{align}
 where $sinc(t)$, the sampling function is defined as:
 \begin{align}
@@ -328,6 +349,35 @@ where $sinc(t)$, the sampling function is defined as:
     1 & t = 0\\
     \frac{\sin(t)}{t} & otherwise
     \end{cases}
+\end{align}
+Let the Fourier Transform of a signal $x(t)$ be $X(f)$.
+\begin{align}
+    x(t) \fourier X(f)
+\end{align}
+When the signal $x(t)$ is time shifted by $t_0$, the resultant Fourier Transform is given by:
+\begin{align}
+    x(t \pm t_0) \fourier X(f)e^{\pm j2\pi ft_0}
+    \label{shift}
+\end{align}
+And when the signal $x(t)$ is time scaled by $\alpha$, the resulting Fourier Transform is given by:
+\begin{align}
+    x(\alpha t) \fourier \frac{1}{\abs{\alpha}}X\brak{\frac{f}{\alpha}}
+    \label{scale}
+\end{align}
+Since we have already derived the Fourier Transform of $rect(t)$, we would use the properties mentioned above to find the Fourier Transform of $h(t)$:
+\begin{align}
+    rect(t) \fourier sinc(\pi f)
+\end{align}
+Using \eqref{shift}:
+\begin{align}
+    rect\brak{t - \frac{T}{2}} \fourier sinc(\pi f)e^{-j(2 \pi f)\frac{T}{2}}\\
+    rect\brak{t - \frac{T}{2}} \fourier sinc(\pi f)e^{-j \pi f T}
+\end{align}
+Using \eqref{scale},
+\begin{align}
+    rect\brak{\frac{1}{T}\brak{t - \frac{T}{2}}} \fourier \frac{1}{\frac{1}{\abs{T}}}sinc\brak{\frac{\pi f }{T}}e^{\frac{-j \pi f T}{T}}\\
+    h(t) \fourier Tsinc\brak{\frac{\pi f }{T}}e^{-j\pi f}\\
+    \therefore H(f)  = Tsinc\brak{\frac{\pi f }{T}}e^{-j\pi f}
 \end{align}
 \begin{figure}[!ht]
 \centering
