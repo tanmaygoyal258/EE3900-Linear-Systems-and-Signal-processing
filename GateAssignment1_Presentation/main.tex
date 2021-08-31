@@ -17,6 +17,7 @@ columns=fullflexible
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
 \providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
 \providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \usepackage[export]{adjustbox}
 \usepackage[utf8]{inputenc}
@@ -319,7 +320,7 @@ From \eqref{rect}, we can write \eqref{Fourier} as:
       = \frac{\sin (\pi f)}{\pi f}
        = sinc(\pi f)
 \end{align}
-where $sinc(t)$, the sampling function is defined as:
+where $sinc(t)$ is defined as:
 \begin{align}
     sinc(t) = 
     \begin{cases}
@@ -361,9 +362,9 @@ Using \eqref{shift}:
 \end{align}
 Using \eqref{scale},
 \begin{align}
-    rect\brak{\frac{1}{T}\brak{t - \frac{T}{2}}} \fourier \frac{1}{\frac{1}{\abs{T}}}sinc\brak{\frac{\pi f }{T}}e^{\frac{-j \pi f T}{T}}\\
-    h(t) \fourier Tsinc\brak{\frac{\pi f }{T}}e^{-j\pi f}\\
-    \therefore H(f)  = Tsinc\brak{\frac{\pi f }{T}}e^{-j\pi f}
+    rect\brak{\frac{1}{T}\brak{t - \frac{T}{2}}} \fourier \frac{1}{\frac{1}{\abs{T}}}sinc\brak{\frac{\pi f }{\frac{1}{T}}}e^{\frac{-j \pi f T}{T}}\\
+    h(t) \fourier Tsinc\brak{\pi f T}e^{-j\pi f}\\
+    \therefore H(f)  = Tsinc\brak{\pi f T}e^{-j\pi f}
 \end{align}
     \end{flushleft}
 \end{frame}
