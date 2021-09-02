@@ -15,6 +15,7 @@ columns=fullflexible
 \usepackage{float}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
 \providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
 \providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
 \providecommand{\abs}[1]{\left\vert#1\right\vert}
@@ -24,7 +25,7 @@ columns=fullflexible
 \usepackage{amsmath}
 \usetheme{Boadilla}
 
-\title{GATE EC 2017- Q.7}
+\title{GATE EC 2017- Q.8}
 \author{Tanmay Goyal - AI20BTECH11021}
 
 \date{}
@@ -370,6 +371,92 @@ Using \eqref{scale},
 \end{frame}
 
 \begin{frame}
+\frametitle{Cosine input signal}    
+\begin{flushleft}
+Consider an input signal of $x(t) = \cos{2\pi f_0t}$. The Fourier Transform of $x(t)$ is given by:
+\begin{align}
+    x(t) = \cos{2\pi f_0t} \fourier \frac{1}{2}\sbrak{\delta(f - f_0) + \delta(f + f_0)}
+\end{align}
+using the fact that 
+\begin{align}
+    \cos{2\pi f_0 t} = \frac{e^{j2\pi f_0 t} + e^{-j2\pi f_0 t}}{2}
+\end{align} and the Fourier Transform of $e^{\pm j2\pi f_0 t}$ is given by:
+\begin{align}
+    e^{\pm j2\pi  f_0 t} \fourier \delta(f \mp f_0)
+    \label{FT}
+\end{align}
+\end{flushleft}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Output Signal}
+    \begin{flushleft}
+The output signal will be given by:
+\begin{align}
+    y(t) = \int_{t-T}^t \cos{2\pi f_0u}\,du\\
+     = \frac{1}{2\pi f_0}\sbrak{\sin{2\pi f_0t}- \sin2\pi f_0({t-T})}\\
+      = \frac{\sin\pi f_0 T}{\pi f_0} \sbrak{\cos2\pi f_0 \brak{t - \frac{T}{2}}}\\
+      = Tsinc(\pi f_0 T)\cos2\pi f_0\brak{t - \frac{T}{2}}
+      \label{output}
+\end{align}
+    \end{flushleft}
+\end{frame}
+\begin{frame}
+    \frametitle{Fourier Transform of output signal}
+    \begin{flushleft}
+    The Fourier transform of $\cos2\pi f_0\brak{t - \frac{T}{2}}$ can be obtained using \eqref{scale} and \eqref{shift} as follows:
+
+\begin{align}
+    \cos t = \frac{1}{2}\sbrak{e^{jt} + e^{-jt}}\\
+    \cos t \fourier \frac{1}{2}\sbrak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}}\\
+    \cos\brak{t - \frac{T}{2}} \fourier \frac{1}{2}\sbrak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}} e^{j\pi fT}\\
+    \cos2\pi f_0\brak{t - \frac{T}{2}} \fourier \frac{1}{2\pi f_0}\frac{\delta(\frac{f}{2\pi f_0} - \frac{1}{2\pi}) + \delta(\frac{f}{2\pi f_0} + \frac{1}{2\pi})}{2} e^{j\pi \frac{f}{2\pi f_0}T}\\
+    \cos2\pi f_0\brak{t - \frac{T}{2}} \fourier\frac{1}{4\pi f_0}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}e^{j\pi \frac{f}{2f_0}T}
+\end{align}
+
+    \end{flushleft}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fourier Transform of output signal}
+The Fourier Transform of the output signal $y(t)$ from \eqref{output} is given by:
+ \begin{align}
+     y(t) \fourier \frac{Tsinc(\pi f_0 T)}{4\pi f_0}e^{j\pi \frac{f}{2f_0}T}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}\\
+     y(t) \fourier ke^{j\pi \frac{f}{2f_0}T}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}
+ \end{align}
+ where $k = \frac{Tsinc(\pi f_0T)}{4\pi f_0}$.
+\end{frame}
+\begin{frame}
+    \frametitle{Fourier Transform of output signal}
+    \begin{flushleft}
+    Substituting $2\pi f_0 = 1$ and $T = 1$:
+ \begin{align}
+     y(t) \fourier ke^{j\pi^2f}\brak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}}\\
+     y(t) \fourier ke^{j\frac{\pi}{2}}\delta\brak{f - \frac{1}{2\pi}} +ke^{j\frac{-\pi}{2}}\delta\brak{f + \frac{1}{2\pi}}
+ \end{align}
+ using the multiplication property of the Delta function:
+ \begin{align}
+     x(t)\delta(t - t_1) = x(t_1)\delta(t - t_1)
+ \end{align}
+ Since , $e^{j\frac{\pi}{2}} = j$ and $e^{-j\frac{\pi}{2}} = -j$, we finally get:
+ \begin{align}
+ y(t) \fourier kj\sbrak{\delta\brak{f - \frac{1}{2\pi}} - \delta\brak{f + \frac{1}{2\pi}}}
+ \end{align}
+    \end{flushleft}
+\end{frame}
+\begin{frame}
+\frametitle{Output signal}
+\begin{flushleft}
+\begin{align}
+    y(t) \fourier kj\sbrak{\delta\brak{f - \frac{1}{2\pi}} - \delta\brak{f + \frac{1}{2\pi}}}
+\end{align}
+Clearly, the Fourier transform of $y(t)$ is similar to that of a sinusoidal wave, which is given by:
+ \begin{align}
+     sin(t) \fourier \frac{-j}{2}\sbrak{\delta\brak{f-\frac{1}{2\pi}} - \delta\brak{f + \frac{1}{2\pi}}}
+ \end{align}
+\end{flushleft}
+\end{frame}
+\begin{frame}
   \frametitle{Graphs: Input and Output signals}
  \begin{columns}
 \begin{column}{0.5\textwidth}
@@ -391,6 +478,10 @@ Using \eqref{scale},
 \end{columns}
    
    
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
 \end{frame}
 \begin{frame}
   \frametitle{Graphs: Laws of Additivity and Homogeneity}
