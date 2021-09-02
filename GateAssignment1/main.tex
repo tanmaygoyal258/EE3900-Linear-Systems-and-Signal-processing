@@ -378,7 +378,62 @@ Using \eqref{scale},
     rect\brak{\frac{1}{T}\brak{t - \frac{T}{2}}} \fourier \frac{1}{\frac{1}{\abs{T}}}sinc\brak{\frac{\pi f }{T}}e^{\frac{-j \pi f T}{T}}\\
     h(t) \fourier Tsinc\brak{\frac{\pi f }{T}}e^{-j\pi f}\\
     \therefore H(f)  = Tsinc\brak{\frac{\pi f }{T}}e^{-j\pi f}
+\end{align}\\
+
+
+Consider an input signal of $x(t) = \cos{2\pi f_0t}$. The Fourier Transform of $x(t)$ is given by:
+\begin{align}
+    x(t) = \cos{2\pi f_0t} \fourier \frac{1}{2}\sbrak{\delta(f - f_0) + \delta(f + f_0)}
 \end{align}
+using the fact that 
+\begin{align}
+    \cos{2\pi f_0 t} = \frac{e^{j2\pi f_0 t} + e^{-j2\pi f_0 t}}{2}
+\end{align} and the Fourier Transform of $e^{\pm j2\pi f_0 t}$ is given by:
+\begin{align}
+    e^{\pm j2\pi  f_0 t} \fourier \delta(f \mp f_0)
+    \label{FT}
+\end{align}
+The output signal will be given by:
+\begin{align}
+    y(t) = \int_{t-T}^t \cos{2\pi f_0u}\,du\\
+     = \frac{1}{2\pi f_0}\sbrak{\sin{2\pi f_0t}- \sin2\pi f_0({t-T})}\\
+      = \frac{\sin\pi f_0 T}{\pi f_0} \sbrak{\cos2\pi f_0 \brak{t - \frac{T}{2}}}\\
+      = Tsinc(\pi f_0 T)\cos2\pi f_0\brak{t - \frac{T}{2}}
+      \label{output}
+\end{align}
+The Fourier transform of $\cos2\pi f_0\brak{t - \frac{T}{2}}$ can be obtained using \eqref{scale} and \eqref{shift} as follows:
+
+\begin{align}
+    \cos t = \frac{1}{2}\sbrak{e^{jt} + e^{-jt}}\\
+    \cos t \fourier \frac{1}{2}\sbrak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}}\\
+    \cos\brak{t - \frac{T}{2}} \fourier \frac{1}{2}\sbrak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}} e^{j\pi fT}\\
+    \cos2\pi f_0\brak{t - \frac{T}{2}} \fourier \frac{1}{2\pi f_0}\frac{\delta(\frac{f}{2\pi f_0} - \frac{1}{2\pi}) + \delta(\frac{f}{2\pi f_0} + \frac{1}{2\pi})}{2} e^{j\pi \frac{f}{2\pi f_0}T}\\
+    \cos 2\pi f_0\brak{t - \frac{T}{2}} \fourier\frac{1}{4\pi f_0}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}e^{j\pi \frac{f}{2f_0}T}
+\end{align}
+
+Therefore, the Fourier Transform of the output signal $y(t)$ from \eqref{output} is given by:
+ \begin{align}
+     y(t) \fourier \frac{Tsinc(\pi f_0 T)}{4\pi f_0}e^{j\pi \frac{f}{2f_0}T}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}\\
+     y(t) \fourier ke^{j\pi \frac{f}{2f_0}T}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}
+ \end{align}
+ where $k = \frac{Tsinc(\pi f_0T)}{4\pi f_0}$. Substituting $2\pi f_0 = 1$ and $T = 1$:
+ \begin{align}
+     y(t) \fourier ke^{j\pi^2f}\brak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}}\\
+     y(t) \fourier ke^{j\frac{\pi}{2}}\delta\brak{f - \frac{1}{2\pi}} +ke^{j\frac{-\pi}{2}}\delta\brak{f + \frac{1}{2\pi}}
+ \end{align}
+ using the multiplication property of the Delta function:
+ \begin{align}
+     x(t)\delta(t - t_1) = x(t_1)\delta(t - t_1)
+ \end{align}
+ Since , $e^{j\frac{\pi}{2}} = j$ and $e^{-j\frac{\pi}{2}} = -j$, we finally get:
+ \begin{align}
+ y(t) \fourier kj\sbrak{\delta\brak{f - \frac{1}{2\pi}} - \delta\brak{f + \frac{1}{2\pi}}}
+ \end{align}
+ Clearly, the Fourier transform of $y(t)$ is similar to that of a sinusoidal wave, which is given by:
+ \begin{align}
+     sin(t) \fourier \frac{-j}{2}\sbrak{\delta\brak{f-\frac{1}{2\pi}} - \delta\brak{f + \frac{1}{2\pi}}}
+ \end{align}
+
 \begin{figure}[!ht]
 \centering
  \includegraphics[width=\columnwidth]{graphs/input_signals.png}
@@ -397,6 +452,7 @@ Using \eqref{scale},
  \begin{figure}[!ht]
 \centering
  \includegraphics[width=\columnwidth]{graphs/law_of_homogeneity.png}
+
  \caption{Law of Homogeneity}
  \end{figure}
   \begin{figure}[!ht]
