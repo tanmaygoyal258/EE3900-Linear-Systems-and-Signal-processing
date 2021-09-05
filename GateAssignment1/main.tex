@@ -168,8 +168,9 @@ The system relating the input signal $x(t$) and output signal $y(t)$, given by
 \end{align}
 is linear and time invariant in nature.
 \end{lemma}
-\begin{proof} 
-From \eqref{L}, we can say the system is linear if it follows both the laws of Additivity and Homogeneity.\\
+\begin{proof}
+\begin{enumerate}
+\item From \eqref{L}, we can say the system is linear if it follows both the laws of Additivity and Homogeneity.\\
 \underline{Law of Additivity:}\\
 Let the two input signals be $x_1(t)$ and $x_2(t)$, and their corresponding output signals be $y_1(t)$ and $y_2(t)$, then:
 \begin{align}
@@ -227,7 +228,7 @@ Clearly, from \eqref{4} and \eqref{5}:
 Thus, the system is \textbf{time-invariant}.\\
 The correct option is \textbf{2) Linear and Time-invariant}\\
 
-Since the given system is an LTI system, it would possess an impulse response $h(t)$, which is the output of the system when the input signal is the Impulse function, given by $\delta(t)$. Thus,
+\item Since the given system is an LTI system, it would possess an impulse response $h(t)$, which is the output of the system when the input signal is the Impulse function, given by $\delta(t)$. Thus,
 \begin{align}
     h(t) = \int_{t-T}^{t} \delta(u)du
 \end{align}
@@ -256,7 +257,7 @@ h(t) =
     \end{cases}
     \label{H}
 \end{align}
-The unit step signal, $u(t)$, is given by:
+\item The unit step signal, $u(t)$, is given by:
 \begin{align}
     u(t) = 
     \begin{cases}
@@ -283,7 +284,7 @@ On subtracting \eqref{u(t)} and \eqref{u(t-T)}, we get our impulse response $h(t
 \begin{align}
     h(t) = u(t) - u(t-T)
 \end{align}
-The unit rectangular signal, $rect(t)$ is given by:
+\item The unit rectangular signal, $rect(t)$ is given by:
 \begin{align}
     rect(t) = 
     \begin{cases}
@@ -324,7 +325,7 @@ We can obtain the impulse response $h(t)$ in terms of $rect(t)$ using time scali
 \end{align}
 Since the time shifting is to be performed on the variable $t$ and not $\frac{t}{T}$\\
 
-Let the Fourier Transform of $h(t)$ be given by $H(f)$ and of the rectangular signal, $rect(t)$ be given by $Y(f)$.
+\item Let the Fourier Transform of $h(t)$ be given by $H(f)$ and of the rectangular signal, $rect(t)$ be given by $Y(f)$.
 \begin{align}
     h(t) \fourier H(f)\\
     rect(t) \fourier Y(f)
@@ -340,14 +341,14 @@ From \eqref{rect}, we can write \eqref{Fourier} as:
     = \frac{e^{j\pi f} - e^{-j \pi f}}{j2\pi f}\\
      = \frac{2j\sin{\pi f}}{j2\pi f}\\
       = \frac{\sin (\pi f)}{\pi f}\\
-       = sinc(\pi f)
+       = sinc(f)
 \end{align}
 where $sinc(t)$, the sampling function is defined as:
 \begin{align}
     sinc(t) = 
     \begin{cases}
     1 & t = 0\\
-    \frac{\sin(t)}{t} & otherwise
+    \frac{\sin(\pi t)}{\pi t} & otherwise
     \end{cases}
 \end{align}
 Let the Fourier Transform of a signal $x(t)$ be $X(f)$.
@@ -366,22 +367,22 @@ And when the signal $x(t)$ is time scaled by $\alpha$, the resulting Fourier Tra
 \end{align}
 Since we have already derived the Fourier Transform of $rect(t)$, we would use the properties mentioned above to find the Fourier Transform of $h(t)$:
 \begin{align}
-    rect(t) \fourier sinc(\pi f)
+    rect(t) \fourier sinc( f)
 \end{align}
 Using \eqref{shift}:
 \begin{align}
-    rect\brak{t - \frac{T}{2}} \fourier sinc(\pi f)e^{-j(2 \pi f)\frac{T}{2}}\\
-    rect\brak{t - \frac{T}{2}} \fourier sinc(\pi f)e^{-j \pi f T}
+    rect\brak{t - \frac{T}{2}} \fourier sinc( f)e^{-j(2 \pi f)\frac{T}{2}}\\
+    rect\brak{t - \frac{T}{2}} \fourier sinc( f)e^{-j \pi f T}
 \end{align}
 Using \eqref{scale},
 \begin{align}
-    rect\brak{\frac{1}{T}\brak{t - \frac{T}{2}}} \fourier \frac{1}{\frac{1}{\abs{T}}}sinc\brak{\frac{\pi f }{T}}e^{\frac{-j \pi f T}{T}}\\
-    h(t) \fourier Tsinc\brak{\frac{\pi f }{T}}e^{-j\pi f}\\
-    \therefore H(f)  = Tsinc\brak{\frac{\pi f }{T}}e^{-j\pi f}
+    rect\brak{\frac{1}{T}\brak{t - \frac{T}{2}}} \fourier \frac{1}{\frac{1}{\abs{T}}}sinc\brak{\frac{ f }{T}}e^{\frac{-j \pi f T}{T}}\\
+    h(t) \fourier Tsinc\brak{\frac{ f }{T}}e^{-j\pi f}\\
+    \therefore H(f)  = Tsinc\brak{\frac{ f }{T}}e^{-j\pi f}
 \end{align}\\
 
 
-Consider an input signal of $x(t) = \cos{2\pi f_0t}$. The Fourier Transform of $x(t)$ is given by:
+\item Consider an input signal of $x(t) = \cos{2\pi f_0t}$. The Fourier Transform of $x(t)$ is given by:
 \begin{align}
     x(t) = \cos{2\pi f_0t} \fourier \frac{1}{2}\sbrak{\delta(f - f_0) + \delta(f + f_0)}
 \end{align}
@@ -398,11 +399,11 @@ The output signal will be given by:
     y(t) = \int_{t-T}^t \cos{2\pi f_0u}\,du\\
      = \frac{1}{2\pi f_0}\sbrak{\sin{2\pi f_0t}- \sin2\pi f_0({t-T})}\\
       = \frac{\sin\pi f_0 T}{\pi f_0} \sbrak{\cos2\pi f_0 \brak{t - \frac{T}{2}}}\\
-      = Tsinc(\pi f_0 T)\cos2\pi f_0\brak{t - \frac{T}{2}}
+      = Tsinc(f_0 T)\cos2\pi f_0\brak{t - \frac{T}{2}}
       \label{output}
 \end{align}
 The Fourier transform of $\cos2\pi f_0\brak{t - \frac{T}{2}}$ can be obtained using \eqref{scale} and \eqref{shift} as follows:
-
+\small{
 \begin{align}
     \cos t = \frac{1}{2}\sbrak{e^{jt} + e^{-jt}}\\
     \cos t \fourier \frac{1}{2}\sbrak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}}\\
@@ -410,13 +411,13 @@ The Fourier transform of $\cos2\pi f_0\brak{t - \frac{T}{2}}$ can be obtained us
     \cos2\pi f_0\brak{t - \frac{T}{2}} \fourier \frac{1}{2\pi f_0}\frac{\delta(\frac{f}{2\pi f_0} - \frac{1}{2\pi}) + \delta(\frac{f}{2\pi f_0} + \frac{1}{2\pi})}{2} e^{j\pi \frac{f}{2\pi f_0}T}\\
     \cos 2\pi f_0\brak{t - \frac{T}{2}} \fourier\frac{1}{4\pi f_0}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}e^{j\pi \frac{f}{2f_0}T}
 \end{align}
-
+}
 Therefore, the Fourier Transform of the output signal $y(t)$ from \eqref{output} is given by:
  \begin{align}
-     y(t) \fourier \frac{Tsinc(\pi f_0 T)}{4\pi f_0}e^{j\pi \frac{f}{2f_0}T}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}\\
+     y(t) \fourier \frac{Tsinc( f_0 T)}{4\pi f_0}e^{j\pi \frac{f}{2f_0}T}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}\\
      y(t) \fourier ke^{j\pi \frac{f}{2f_0}T}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}
  \end{align}
- where $k = \frac{Tsinc(\pi f_0T)}{4\pi f_0}$. Substituting $2\pi f_0 = 1$ and $T = 1$:
+ where $k = \frac{Tsinc( f_0T)}{4\pi f_0}$. Substituting $2\pi f_0 = 1$ and $T = 1$:
  \begin{align}
      y(t) \fourier ke^{j\pi^2f}\brak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}}\\
      y(t) \fourier ke^{j\frac{\pi}{2}}\delta\brak{f - \frac{1}{2\pi}} +ke^{j\frac{-\pi}{2}}\delta\brak{f + \frac{1}{2\pi}}
@@ -464,6 +465,6 @@ Therefore, the Fourier Transform of the output signal $y(t)$ from \eqref{output}
  \includegraphics[width=\columnwidth]{graphs/time_invariance.png}
  \caption{Time invariance}
  \end{figure}
+\end{enumerate}
 \end{proof}
-
 \end{document}
