@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+T = 0.00004
+
 def x1(t):
     return np.sin(t)
 
@@ -18,11 +21,31 @@ def y2(t):
 def y1plusy2(t):
     return np.cos(t-1) - np.cos(t) + 0.5 * (t**2 - (t-1)**2)
 
+def h(t):
+    res = []
+    for i in range(len(t)):
+        if t[i]<T:
+            res.append(1)
+        else:
+            res.append(0)
+    return np.array(res)
+
+
+# plotting fourier transform of impulse response
+t = np.arange(0.0, 0.001, 0.000001)
+#print(h(t))
+impulse_fourier =  np.fft.fft(h(t))
+freq=np.fft.fftfreq(impulse_fourier.shape[0], d=1/1e5)
+
+plt.plot(freq, np.abs(impulse_fourier) ,'-', label = "Fourier transform of Impulse response")
+plt.grid(True)
+plt.legend(loc = 'upper right')
+plt.show()
+
 # Plotting fourier transforms
-T = 0.00004
 f_0 = 10000
 t = np.arange(0.0, 0.001, 0.00001)
-x   = np.cos(2*np.pi*f_0*t)
+x = np.cos(2*np.pi*f_0*t)
 y = np.sin(2*np.pi*f_0*t) - np.sin(2*np.pi*f_0*(t-T))
 fourier_input = np.fft.fft(x)
 fourier_output = np.fft.fft(y)
