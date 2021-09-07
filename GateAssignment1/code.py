@@ -31,30 +31,38 @@ def h(t):
     return np.array(res)
 
 
-# plotting fourier transform of impulse response
+# plotting fourier transform of impulse response and example input and output signal
 t = np.arange(0.0, 0.001, 0.000001)
-#print(h(t))
 impulse_fourier =  np.fft.fft(h(t))
-freq=np.fft.fftfreq(impulse_fourier.shape[0], d=1/1e5)
 
-plt.plot(freq, np.abs(impulse_fourier) ,'-', label = "Fourier transform of Impulse response")
-plt.grid(True)
-plt.legend(loc = 'upper right')
-plt.show()
-
-# Plotting fourier transforms
 f_0 = 10000
-t = np.arange(0.0, 0.001, 0.00001)
+
 x = np.cos(2*np.pi*f_0*t)
-y = np.sin(2*np.pi*f_0*t) - np.sin(2*np.pi*f_0*(t-T))
+y = (np.sin(2*np.pi*f_0*t) - np.sin(2*np.pi*f_0*(t-T)))/(2 * np.pi * f_0)
 fourier_input = np.fft.fft(x)
 fourier_output = np.fft.fft(y)
-fourier_input=np.fft.fft(x)
 freq=np.fft.fftfreq(fourier_input.shape[0], d=1/1e5)
 
+plt.plot(freq, np.abs(impulse_fourier) ,'-', label = "Fourier transform of Impulse response")
 plt.plot(freq , np.abs(fourier_input) , label = "Fourier Transform of $x(t) = cos 2 \\pi f_0 t$")
 plt.plot(freq , np.abs(fourier_output) , label = "Fourier Transform of $y(t) = \\int_{t-T}^t x(t)\\,dt$")
-plt.legend()
+plt.plot(np.array([1000 for i in range(10)]) , np.array([50*i for i in range(10)]) , 'r--')
+plt.plot(np.array([-1000 for i in range(10)]) , np.array([50*i for i in range (10)]) , 'r--')
+plt.ylim(0,400)
+plt.xlim(-5000,5000)
+plt.legend(loc = 'upper right')
+plt.grid(True)
+plt.show()
+
+# zoomed fourier transforms
+plt.plot(freq, np.abs(impulse_fourier) ,'-', label = "Fourier transform of Impulse response")
+plt.plot(freq , np.abs(fourier_input) , label = "Fourier Transform of $x(t) = cos 2 \\pi f_0 t$")
+plt.plot(freq , np.abs(fourier_output) , label = "Fourier Transform of $y(t) = \\int_{t-T}^t x(t)\\,dt$")
+plt.plot(np.array([1000 for i in range(10)]) , np.array([50*i for i in range(10)]) , 'r--')
+plt.plot(np.array([-1000 for i in range(10)]) , np.array([50*i for i in range (10)]) , 'r--')
+plt.ylim(0,0.5)
+plt.xlim(-2000,2000)
+plt.legend(loc = 'upper right')
 plt.grid(True)
 plt.show()
 
