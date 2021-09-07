@@ -155,12 +155,13 @@ Subsituting $y = 0$, we get:
 \begin{align}
     \vec{x}^T \myvec{\sqrt{5} & 0\\0 & 0}\vec{x} + \myvec{1 & 0}\vec{x} + \sqrt{5} = 0\\
     \sqrt{5}x^2 + x + \sqrt{5} = 0\\
-    \brak{x - \myvec{\frac{-1}{2\sqrt{5}}\\\frac{\sqrt{19}}{2\sqrt{5}}}}\brak{x - \myvec{\frac{-1}{2\sqrt{5}}\\\frac{-\sqrt{19}}{2\sqrt{5}}}} = 0\\
-    x = \myvec{\frac{-1}{2\sqrt{5}}\\\frac{\sqrt{19}}{2\sqrt{5}}} , \myvec{\frac{-1}{2\sqrt{5}}\\\frac{-\sqrt{19}}{2\sqrt{5}}}\\
-    x = \myvec{-0.223\\0.974} , \myvec{-0.223\\-0.974}
+    x^2 + \frac{1}{\sqrt{5}}x + 1 = 0\\
+    x^2 + \frac{1}{\sqrt{5}}x + \brak{\frac{1}{2\sqrt{5}}}^2 - \brak{\frac{1}{2\sqrt{5}}}^2 + 1 = 0\\
+    \brak{x + \frac{1}{2\sqrt{5}}}^2 + 1 - \frac{1}{20} = 0\\
+    \brak{x + \frac{1}{2\sqrt{5}}}^2 + \frac{19}{20} = 0
 \end{align}
-
-The roots can be verified using the python code. As we can see from the graph, $\sqrt{5}x^2 + x + \sqrt{5} = 0$ does not intersect the x-axis anywhere, and hence has no real roots.
+Clearly, for no value of $x$ would we get the value of this expression to be $0$, and hence, this equation has no real roots.\\
+The roots can be verified using the python code. As we can see from the graph, $\sqrt{5}x^2 + x + \sqrt{5} = 0$ does not intersect the x-axis anywhere, and hence, has no real roots.
  \begin{figure}[!ht]
 \centering
  \includegraphics[width=\columnwidth]{graph.png}
