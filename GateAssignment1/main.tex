@@ -170,7 +170,8 @@ is linear and time invariant in nature.
 \end{lemma}
 \begin{proof}
 \begin{enumerate}
-\item From \eqref{L}, we can say the system is linear if it follows both the laws of Additivity and Homogeneity.\\
+\item \textbf{\underline{Linearity and Time invariance}}\\
+From \eqref{L}, we can say the system is linear if it follows both the laws of Additivity and Homogeneity.\\
 \underline{Law of Additivity:}\\
 Let the two input signals be $x_1(t)$ and $x_2(t)$, and their corresponding output signals be $y_1(t)$ and $y_2(t)$, then:
 \begin{align}
@@ -228,10 +229,40 @@ Clearly, from \eqref{4} and \eqref{5}:
 Thus, the system is \textbf{time-invariant}.\\
 The correct option is \textbf{2) Linear and Time-invariant}\\
 
-\item Since the given system is an LTI system, it would possess an impulse response $h(t)$, which is the output of the system when the input signal is the Impulse function, given by $\delta(t)$. Thus,
+
+\begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{graphs/input_signals.png}
+ \caption{$x_1(t) = \sin{t}$ and $x_2(t) = t$}
+ \end{figure}
+\begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{graphs/output_signals.png}
+ \caption{$y_1(t)$ and  $y_2(t)$}
+ \end{figure}
+ \begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{graphs/law_of_additivity.png}
+ \caption{Law of Additivity}
+ \end{figure}
+ \begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{graphs/law_of_homogeneity.png}
+
+ \caption{Law of Homogeneity}
+ \end{figure}
+  \begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{graphs/time_invariance.png}
+ \caption{Time invariance}
+ \end{figure}
+
+\item \textbf{\underline{Calculating impulse response of LTI system}}\\
+Since the given system is an LTI system, it would possess an impulse response $h(t)$, which is the output of the system when the input signal is the Impulse function, given by $\delta(t)$. Thus,
 \begin{align}
     h(t) = \int_{t-T}^{t} \delta(u)du
-\end{align}
+\end{align}\\
+\\
 The Impulse function can be loosely defined as:
 \begin{align}
     \delta(t) = 
@@ -257,7 +288,8 @@ h(t) =
     \end{cases}
     \label{H}
 \end{align}
-\item The unit step signal, $u(t)$, is given by:
+\item \textbf{\underline{Expressing the impulse function in terms of $u(t)$}} \\
+The unit step signal, $u(t)$, is given by:
 \begin{align}
     u(t) = 
     \begin{cases}
@@ -284,7 +316,8 @@ On subtracting \eqref{u(t)} and \eqref{u(t-T)}, we get our impulse response $h(t
 \begin{align}
     h(t) = u(t) - u(t-T)
 \end{align}
-\item The unit rectangular signal, $rect(t)$ is given by:
+\item \textbf{\underline{Expressing the impulse function in terms of $rect(t)$}}\\
+The unit rectangular signal, $rect(t)$ is given by:
 \begin{align}
     rect(t) = 
     \begin{cases}
@@ -325,7 +358,9 @@ We can obtain the impulse response $h(t)$ in terms of $rect(t)$ using time scali
 \end{align}
 Since the time shifting is to be performed on the variable $t$ and not $\frac{t}{T}$\\
 
-\item Let the Fourier Transform of $h(t)$ be given by $H(f)$ and of the rectangular signal, $rect(t)$ be given by $Y(f)$.
+\item 
+\textbf{\underline{Calculating the Fourier Transform of $h(t)$}}\\
+Let the Fourier Transform of $h(t)$ be given by $H(f)$ and of the rectangular signal, $rect(t)$ be given by $Y(f)$.
 \begin{align}
     h(t) \fourier H(f)\\
     rect(t) \fourier Y(f)
@@ -382,7 +417,8 @@ Using \eqref{scale},
 \end{align}\\
 
 
-\item Consider an input signal of $x(t) = \cos{2\pi f_0t}$. The Fourier Transform of $x(t)$ is given by:
+\item \textbf{\underline{An example}}\\
+Consider an input signal of $x(t) = \cos{2\pi f_0t}$. The Fourier Transform of $x(t)$ is given by:
 \begin{align}
     x(t) = \cos{2\pi f_0t} \fourier \frac{1}{2}\sbrak{\delta(f - f_0) + \delta(f + f_0)}
 \end{align}
@@ -446,32 +482,6 @@ The attenuation happens for the same values of $f$, as depicted in the graphs of
  \caption{Fourier Transform of Impulse response $h(t)$ zoomed in}
  \end{figure}
 
-\begin{figure}[!ht]
-\centering
- \includegraphics[width=\columnwidth]{graphs/input_signals.png}
- \caption{$x_1(t) = \sin{t}$ and $x_2(t) = t$}
- \end{figure}
-\begin{figure}[!ht]
-\centering
- \includegraphics[width=\columnwidth]{graphs/output_signals.png}
- \caption{$y_1(t)$ and  $y_2(t)$}
- \end{figure}
- \begin{figure}[!ht]
-\centering
- \includegraphics[width=\columnwidth]{graphs/law_of_additivity.png}
- \caption{Law of Additivity}
- \end{figure}
- \begin{figure}[!ht]
-\centering
- \includegraphics[width=\columnwidth]{graphs/law_of_homogeneity.png}
-
- \caption{Law of Homogeneity}
- \end{figure}
-  \begin{figure}[!ht]
-\centering
- \includegraphics[width=\columnwidth]{graphs/time_invariance.png}
- \caption{Time invariance}
- \end{figure}
 \end{enumerate}
 \end{proof}
 \end{document}
