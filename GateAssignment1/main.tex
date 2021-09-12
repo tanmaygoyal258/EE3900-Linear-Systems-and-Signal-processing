@@ -371,6 +371,7 @@ Let the Fourier Transform of $h(t)$ be given by $H(f)$ and of the rectangular si
     \label{Fourier}
 \end{align}
 From \eqref{rect}, we can write \eqref{Fourier} as:
+\small{
 \begin{align}
    Y(f) = \int_{-\infty}^\frac{-1}{2} 0\,dt + \int_{\frac{-1}{2}}^\frac{1}{2} e^{-j2\pi ft}\,dt + \int_\frac{1}{2}^\infty 0\,dt\\
     = \frac{e^{j\pi f} - e^{-j \pi f}}{j2\pi f}\\
@@ -378,6 +379,7 @@ From \eqref{rect}, we can write \eqref{Fourier} as:
       = \frac{\sin (\pi f)}{\pi f}\\
        = sinc(f)
 \end{align}
+}
 where $sinc(t)$, the sampling function is defined as:
 \begin{align}
     sinc(t) = 
@@ -443,9 +445,9 @@ The Fourier transform of $\cos2\pi f_0\brak{t - \frac{T}{2}}$ can be obtained us
 \begin{align}
     \cos t = \frac{1}{2}\sbrak{e^{jt} + e^{-jt}}\\
     \cos t \fourier \frac{1}{2}\sbrak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}}\\
-    \cos\brak{t - \frac{T}{2}} \fourier \frac{1}{2}\sbrak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}} e^{j\pi fT}\\
-    \cos2\pi f_0\brak{t - \frac{T}{2}} \fourier \frac{1}{2\pi f_0}\frac{\delta(\frac{f}{2\pi f_0} - \frac{1}{2\pi}) + \delta(\frac{f}{2\pi f_0} + \frac{1}{2\pi})}{2} e^{j\pi \frac{f}{2\pi f_0}T}\\
-    \cos 2\pi f_0\brak{t - \frac{T}{2}} \fourier\frac{1}{4\pi f_0}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}e^{j\pi \frac{f}{2f_0}T}
+    \cos\brak{t - \frac{T}{2}} \fourier \frac{e^{j\pi fT}}{2}\sbrak{\delta\brak{f - \frac{1}{2\pi}} + \delta\brak{f + \frac{1}{2\pi}}} \\
+    \cos2\pi f_0\brak{t - \frac{T}{2}} \fourier \frac{e^{j\pi \frac{f}{2\pi f_0}T}}{2\pi f_0}\frac{\delta(\frac{f}{2\pi f_0} - \frac{1}{2\pi}) + \delta(\frac{f}{2\pi f_0} + \frac{1}{2\pi})}{2} \\
+    \cos 2\pi f_0\brak{t - \frac{T}{2}} \fourier\frac{e^{j\pi \frac{f}{2f_0}T}}{4\pi f_0}\brak{\delta\brak{\frac{f - f_0}{2\pi f_0}} + \delta\brak{\frac{f + f_0}{2\pi f_0}}}
 \end{align}
 }
 Therefore, the Fourier Transform of the output signal $y(t)$ from \eqref{output} is given by:
