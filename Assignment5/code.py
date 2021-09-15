@@ -36,8 +36,9 @@ xStandardparab = np.vstack((y,x))
 
 xActualparab = P@xStandardparab + c[:,np.newaxis]
 
-
+plt.plot(xStandardparab[0,:],xStandardparab[1,:],label='Standard Parabola',color='b')
 plt.plot(xActualparab[0,:],xActualparab[1,:],label='$\\sqrt{5}x^2 + x + \\sqrt{5}$',color='r')
+
 plt.plot([i for i in range(-5,5)] , [0 for i in range(-5,5)] , 'k-',label = "x-axis" )
 plt.xlabel('$x$')
 plt.ylabel('$y$')
