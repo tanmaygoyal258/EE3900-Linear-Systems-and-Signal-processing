@@ -194,19 +194,19 @@ Thus,
     0 & otherwise
     \end{cases}
 \end{align}
-The formula for Discrete Fourier Transform is given by:
+The formula for Z transform is given by:
 \begin{align}
-    Y(e^{j\omega}) = \sum_{n = -\infty}^{\infty} y[n]e^{-j\omega n}
+    Y(z) = \sum_{n = -\infty}^{\infty} y[n]z^{-n}
 \end{align}
 Thus, 
 \begin{align}
-    Y(e^{j\omega}) = \sum_{n = -\infty}^{\infty} \brak{\frac{1}{4}}^nu[n]e^{-j\omega n}\\
-     =  \sum_{n = 0}^{\infty} \brak{\frac{1}{4}}^ne^{-j\omega n}\\
-      = \sum_{n = 0}^{\infty} \brak{\frac{e^{-j\omega}}{4}}^n\\
-       = \frac{1}{1 - \frac{e^{-j\omega}}{4}}\\
-       = \frac{4}{4 - e^{-j\omega}}
+    Y(z) = \sum_{n = -\infty}^{\infty} \brak{\frac{1}{4}}^nu[n]z^{-n}\\
+     =  \sum_{n = 0}^{\infty} \brak{\frac{1}{4}}^nz^{-n}\\
+      = \sum_{n = 0}^{\infty} \brak{\frac{z^{-1}}{4}}^n\\
+       = \frac{1}{1 - \frac{z^{-1}}{4}}, ROC = \abs{\frac{z^{-1}}{4}} < 1\\
+       = \frac{4}{4 - z^{-1}} , ROC = \abs{z} > \frac{1}{4}
 \end{align}
-using the formula for the infinite sum of a Geometric Progression. Substituting $\omega = 0$, we get:
+using the formula for the infinite sum of a Geometric Progression. Since $z = e^{j0} = 1$ satisfies the $ROC$ condition, substituting $z = e^{j0}$, we get:
 \begin{align}
     Y(e^{j0}) = \frac{4}{4-e^{-j0}} = \frac{4}{3}
 \end{align}
@@ -226,7 +226,7 @@ Thus, the correct answer is \textbf{4) $\frac{4}{3}$}
  
  \begin{figure}[!ht]
 \centering
- \includegraphics[width=\columnwidth]{graphs/Fourier_transform.png}
+ \includegraphics[width=\columnwidth]{graphs/fourier.png}
  \caption{$Y(e^{j\omega})$}
  \end{figure}
 \end{document}
