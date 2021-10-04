@@ -1,0 +1,313 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+
+\usepackage{amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+\providecommand{\ztrans}{\overset{\mathcal{Z}}{ \rightleftharpoons}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{}}
+\numberwithin{equation}{subsection}
+
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+
+\renewcommand{\thefigure}{\theproblem}
+
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{Gate Assignment 4}
+\author{Tanmay Goyal - AI20BTECH11021}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+
+Download all latex codes from 
+\begin{lstlisting}
+https://github.com/tanmaygoyal258/EE3900-Linear-Systems-and-Signal-processing/blob/main/GateAssignment4/main.tex
+\end{lstlisting}
+\section{Problem}
+(EC-2001/Q.16) The Fourier Transform $G(\omega)$ of the signal $g(t)$ is given by 
+\begin{align}
+    G(\omega) = \frac{1}{\omega^2}(e^{j\omega} - j\omega e^{j\omega} - 1)
+\end{align}
+Using this information, find the Fourier Transforms of the signals $g_1(t)$, $g_2(t)$ and $g_3(t)$.
+\begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{Question.png}
+\end{figure}
+\section{Solution}
+
+\begin{lemma}
+If 
+\begin{align}
+    g(t) \fourier G(\omega)
+\end{align}
+then,
+\begin{align}
+    g(t \pm t_0) \fourier G(\omega)e^{\pm j\omega t_0}
+\end{align}
+\label{shift}
+\end{lemma} 
+
+\begin{proof}
+We know, 
+\begin{align}
+    G(\omega) = \int_{-\infty}^\infty g(t) e^{-j \omega t} \,dt
+\end{align}
+Let 
+\begin{align}
+    g(t + t_0) \fourier G'(\omega)
+\end{align}
+Then,
+\begin{align}
+    G'(\omega) = \int_{-\infty}^\infty g(t + t_0) e^{-j \omega t} \,dt
+\end{align}
+Substituting $t + t_0 = T$, we get:
+\begin{align}
+    G'(\omega) = \int_{-\infty}^\infty g(T) e^{-j \omega (T - t_0)} \,dT\\
+     = \int_{-\infty}^\infty g(T) e^{-j \omega T} e^{j \omega t_0} \,dT\\
+      =e^{j \omega t_0} \int_{-\infty}^\infty g(T) e^{-j \omega T} \,dT\\
+       = e^{j \omega t_0}G(\omega)
+\end{align}
+Similarly, it can be proved:
+ \begin{align}
+     g(t - t_0) \fourier e^{-j\omega t_0}G(\omega)
+ \end{align}
+\end{proof}
+
+\begin{lemma}
+If 
+\begin{align}
+    g(t) \fourier G(\omega)
+\end{align}
+then,
+\begin{align}
+    g(\alpha t) \fourier \frac{1}{\abs{\alpha}}G\brak{\frac{\omega}{\alpha}}
+\end{align}
+\label{scale}
+\end{lemma}
+\begin{proof}
+Consider $\alpha > 0$. Then, we know, 
+\begin{align}
+    G(\omega) = \int_{-\infty}^\infty g(t) e^{-j \omega t} \,dt
+\end{align}
+Let 
+\begin{align}
+    g(\alpha t) \fourier G'(\omega)
+\end{align}
+Then,
+\begin{align}
+    G'(\omega) = \int_{-\infty}^\infty g(\alpha t) e^{-j \omega t} \,dt
+\end{align}
+Making the substitution $T = \alpha t$, we get:
+\begin{align}
+     G'(\omega) = \frac{1}{\alpha}\int_{-\infty}^\infty g(T) e^{-j \frac{\omega T}{\alpha}} \,dT\\
+     = \frac{1}{\alpha}G\brak{\frac{\omega}{\alpha}}
+\end{align}
+Similarly, it can be proved for $\alpha < 0$
+\begin{align}
+    g(\alpha t) \fourier \frac{-1}{\alpha}G\brak{\frac{-\omega}{\alpha}}
+\end{align}
+\end{proof}
+\begin{corollary}
+If 
+\begin{align}
+    g(t) \fourier G(\omega)
+\end{align}
+then,
+\begin{align}
+    g(- t) \fourier G(-\omega)
+\end{align}
+\label{reverse}
+\end{corollary}
+\begin{lemma}
+If 
+\begin{align}
+    g(t) \fourier G(\omega)
+\end{align}
+then,
+\begin{align}
+    \frac{d g(t)}{dt} \fourier (j\omega) G(\omega)
+\end{align}
+\label{diff}
+\end{lemma}
+\begin{proof}
+Using the formula for Inverse Fourier transform, we know:
+\begin{align}
+    g(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}G(\omega)e^{j\omega t} \,d\omega\\
+    \frac{d g(t)}{dt} = \frac{1}{2\pi}\int_{-\infty}^{\infty}G(\omega)e^{j\omega t} (j\omega) \,d\omega\\
+    = \frac{j\omega}{2\pi}\int_{-\infty}^{\infty}G(\omega)e^{j\omega t} \,d\omega\\
+     = (j\omega)G(\omega)
+\end{align}
+\end{proof}
+Now, from the figure:
+\begin{align}
+    g(t) = 
+    \begin{cases}
+    -t & -1 \geq t \geq 0\\
+    0 & otherwise
+    \end{cases}\\
+    g_1(t) = 
+    \begin{cases}
+    t & 0 \geq t \geq 1\\
+    0 & otherwise
+    \end{cases}\\
+    g_2(t) = 
+    \begin{cases}
+    1+t & -1 \geq t \geq 0\\
+    0 & otherwise
+    \end{cases}\\
+    g_3(t) = 
+    \begin{cases}
+    1 & -\frac{1}{2} \geq t \geq \frac{1}{2}\\
+    0 & otherwise
+    \end{cases}
+\end{align}
+Clearly, $g_1(t) = g(-t)$, and using \eqref{reverse}, we get:
+\begin{align}
+    G_1(\omega) = G(-\omega) = \frac{1}{\omega^2}(e^{-j\omega} + j\omega e^{-j\omega} - 1)
+\end{align}
+Also, $g_2(t) = g_1(t + 1)$. Thus, from \eqref{shift}, we get:
+\begin{align}
+    G_2(\omega) = G_1(\omega)e^{j\omega.1} \\ =\frac{1}{\omega^2}(e^{-j\omega} + j\omega e^{-j\omega} - 1) \times e^{j\omega}\\
+    =\frac{1}{\omega^2}(1 + j\omega - e^{j\omega})
+\end{align}
+Finally, $g_3(t)$ is non-zero between $\frac{-1}{2}$ and $\frac{1}{2}$. Thus, we can shift $g_1(t)$ and take it's derivative wrt time:
+\begin{align}
+    g_1(t) = 
+    \begin{cases}
+    t & 0 \geq t \geq 1\\
+    0 & otherwise
+    \end{cases}\\
+    g_1\brak{t + \frac{1}{2}} = 
+    \begin{cases}
+    t + \frac{1}{2} & -\frac{1}{2} \geq t \geq \frac{1}{2}\\
+    0 & otherwise
+    \end{cases}\\
+    \frac{dg_1\brak{t + \frac{1}{2}}}{dt} = 
+    \begin{cases}
+    1 & -\frac{1}{2} \geq t \geq \frac{1}{2}\\
+    0 & otherwise
+    \end{cases} = g_3(t)
+\end{align}
+Using \eqref{shift} and \eqref{diff}, we get:
+\begin{align}
+    g_1(t) \fourier G_1(\omega)\\
+    g_1\brak{t + \frac{1}{2}}\fourier e^{\frac{j\omega}{2}}G_1(\omega) \\g_1\brak{t + \frac{1}{2}}\fourier\frac{e^{-\frac{j\omega}{2}}}{\omega^2}(1 + j\omega  - e^{j\omega})\\
+    \frac{dg_1\brak{t + \frac{1}{2}}}{dt} \fourier \frac{j\omega e^{-\frac{j\omega}{2}}}{\omega^2}(1 + j\omega  - e^{j\omega})\\
+    g_3(t) \fourier \frac{j e^{-\frac{j\omega}{2}}}{\omega}(1 + j\omega  - e^{j\omega})
+\end{align}
+\end{document}
