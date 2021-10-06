@@ -180,6 +180,12 @@ Let the input signal be given by $x[n]$ and the output signal be given by $y[n]$
 Since, $y[n]$ is causal, it should be independent of future values of $n$. \\
 If $k < 0$, then $n - k > n$, which is undesirable, and thus, to keep $y[n]$ independent of future values, $h[k] = 0 , k< 0$
 \end{proof}
+
+\begin{lemma}
+A system is said to be causal if and only if the ROC of the impulse function lies outside the outermost pole.
+\label{Causal}
+\end{lemma}
+
 \begin{lemma}
 If $x[n] = a^nu[n]$, where 
 \begin{align}
@@ -240,6 +246,16 @@ To find the inverse Z-Transform, we would decompose the function using partial f
        = \frac{1}{1 - \frac{1}{4}z^{-1}} + \frac{1}{1 - \frac{1}{2}z^{-1}}
        \label{partial-fraction}
 \end{align}
+
+From the above decomposition, we find that the poles of $H(z)$ are $z = \frac{1}{4} , \frac{1}{2}$, and the zeroes are $z = \frac{3}{8}$, as shown in the plot-zero diagram given below.
+Thus, we can also say the outermost pole is $z = \frac{1}{2}$, and thus, from \eqref{Causal}, the system is Causal iff $\abs{z} > \frac{1}{2}$
+
+ \begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{Graphs/Pole-zero.png}
+ \caption{Pole-Zero plot for $H(z)$}
+ \end{figure}
+
 Now, if ROC = $\abs{z}>\frac{1}{2}$, this automatically implies $\abs{z} > \frac{1}{4}$, thus, from \eqref{z-transform}, we can say:
 \begin{align}
     h[n] = \brak{\frac{1}{2}}^n u[n] + \brak{\frac{1}{4}}^n u[n] 
@@ -247,6 +263,12 @@ Now, if ROC = $\abs{z}>\frac{1}{2}$, this automatically implies $\abs{z} > \frac
 Since ROC = $\abs{z}>\frac{1}{2}$ includes the unit circle, the system is stable.\\
 Moreover, we see $h[n] = 0 $
  for $n < 0$, since $u[n] = 0$ for $n< 0$. Thus, the system is Causal as well.\\\textbf{ Hence, S1 is correct}\\
+ 
+ \begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{Graphs/S1.png}
+ \caption{$h[n]$ when $\abs{z} > \frac{1}{2}$}
+ \end{figure}
  
  When ROC = $\frac{1}{4} < \abs{z} < \frac{1}{2}$, since the unit circle is not included in the ROC, the system cannot be stable. Moreover, the ROC condition for only one of the two fractions in \eqref{partial-fraction} is satisfied, i.e
  \begin{align}
@@ -263,6 +285,12 @@ Moreover, we see $h[n] = 0 $
  Clearly, for $n<-1$ , $-n-1 > 0$ and hence, $h[n] \neq 0$ for $n<0$, and thus, the system is non-causal.\\
 \textbf{ S3 is also correct}.\\
 
+   \begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{Graphs/S3.png}
+ \caption{$h[n]$ when $\frac{1}{4}<\abs{z} < \frac{1}{2}$}
+ \end{figure}
+
 When ROC = $\abs{z} < \frac{1}{4}$, this automatically implies $\abs{z} < \frac{1}{2}$. Since the unit circle is not included, the system is unstable. Moreover, from \eqref{z-transform}, since both the ROC conditions are violated, from \eqref{ROC-violation}, we get:
 \begin{align}
     -\brak{\frac{1}{2}}^nu[-n-1] \ztrans \frac{1}{1 - \frac{1}{2}z^{-1}} , \abs{z} < \frac{1}{2}\\
@@ -275,28 +303,16 @@ Thus, we get:
 \end{align}
 Clearly, for $n<-1$ , $-n-1 > 0$, and thus, $h[n] \neq 0 , n<0$. The system is non-causal.
 \textbf{Hence, S2 is incorrect}\\
+ The correct option is \textbf{3) Both S1 and S3 are correct}
 
-The correct option is \textbf{3) Both S1 and S3 are correct}
+  \begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{Graphs/S2.png}
+ \caption{$h[n]$ when $\abs{z} < \frac{1}{4}$} \end{figure}
+ 
 \begin{figure}[!ht]
 \centering
  \includegraphics[width=\columnwidth]{Graphs/ROC.png}
  \caption{ROC}
  \end{figure}
- 
- \begin{figure}[!ht]
-\centering
- \includegraphics[width=\columnwidth]{Graphs/S1.png}
- \caption{$h[n]$ when $\abs{z} > \frac{1}{2}$}
- \end{figure}
-  \begin{figure}[!ht]
-\centering
- \includegraphics[width=\columnwidth]{Graphs/S3.png}
- \caption{$h[n]$ when $\frac{1}{4}<\abs{z} < \frac{1}{2}$}
- \end{figure}
-  \begin{figure}[!ht]
-\centering
- \includegraphics[width=\columnwidth]{Graphs/S2.png}
- \caption{$h[n]$ when $\abs{z} < \frac{1}{4}$}
- \end{figure}
- 
  \end{document}
