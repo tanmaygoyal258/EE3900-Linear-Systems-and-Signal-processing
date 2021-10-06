@@ -40,6 +40,20 @@ plt.legend()
 
 plt.show()
 
+pole1 = [0.25,0]
+pole2 = [0.5 , 0]
+zero = [3/8,0]
+
+theta = np.linspace(0,2*np.pi , 1000)
+
+plt.plot(np.sin(theta), np.cos(theta) , 'k-' , label = "Unit Circle: $|z| = 1$")
+plt.plot([pole1[0] , pole2[0]] , [pole1[1],pole2[1]] , 'bx' , label = "Poles of $H(z)$")
+plt.plot(zero[0] , zero[1] , 'ro' , label = "Zeroes of $H(z)$")
+plt.grid(True)
+plt.legend(loc = 'lower left')
+plt.title("Pole-Zero Diagram for $H(z)")
+plt.show()
+
 
 X = np.arange(-10 , 10 , 1)
 
