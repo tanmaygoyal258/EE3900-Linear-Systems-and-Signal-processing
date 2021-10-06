@@ -103,6 +103,18 @@ If $k < 0$, then $n - k > n$, which is undesirable, and thus, to keep $y[n]$ ind
 
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{Another Lemma on Causality of System}
+\begin{flushleft}
+\begin{lemma}
+A  system  is  said  to  be  causal  if  and only if the ROC of the impulse function lies outside the outermost pole.
+\label{Causal}
+\end{lemma}
+\end{flushleft}
+
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Z-transform Lemma}
 \begin{flushleft}
@@ -216,6 +228,28 @@ To find the inverse Z-Transform, we would decompose the function using partial f
 \end{align}
   \end{flushleft}
 \end{frame}
+
+\begin{frame}
+    \frametitle{Pole Zero plot}
+    \begin{flushleft}
+    From the above decomposition, we find that the poles of $H(z)$ are $z = \frac{1}{4} , \frac{1}{2}$, and the zeroes are $z = \frac{3}{8}$, as shown in the plot-zero diagram given below.
+Thus, we can also say the outermost pole is $z = \frac{1}{2}$, and thus, from \eqref{Causal}, the system is Causal iff $\abs{z} > \frac{1}{2}$
+\end{flushleft}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Pole Zero plot}
+    \begin{flushleft}
+    
+\begin{figure}[!ht]
+\centering
+ \includegraphics[width=\columnwidth]{graphs/Pole-zero.png}
+ \caption{Pole-Zero plot for $H(z)$}
+ \end{figure}
+\end{flushleft}
+\end{frame}
+
 
 \begin{frame}
     \frametitle{When ROC: $\abs{z} > \frac{1}{2}$}
