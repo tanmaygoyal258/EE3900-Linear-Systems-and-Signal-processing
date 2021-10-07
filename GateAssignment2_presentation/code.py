@@ -13,6 +13,10 @@ def u(x):
 
 
 n, radii = 50, [0.25 , 0.5]
+pole1 = [0.25,0]
+pole2 = [0.5 , 0]
+zero = [3/8,0]
+
 theta = np.linspace(0, 2*np.pi, n, endpoint=True)
 xs = np.outer(radii, np.cos(theta))
 ys = np.outer(radii, np.sin(theta))
@@ -34,26 +38,13 @@ ys1[1,:] = ys1[1,::-1]
 ax = plt.subplot(111, aspect='equal')
 ax.fill(np.ravel(xs), np.ravel(ys), edgecolor='#348ABD' , label = "$\\frac{1}{4}< |z| < \\frac{1}{2}$")
 ax.fill(np.ravel(xs1), np.ravel(ys1), edgecolor='#000000' , label = "$\\frac{1}{2} < |z| < 1$")
-plt.title("ROC")
+plt.plot(np.sin(theta), np.cos(theta) , 'k-' , label = "Unit Circle: $|z| = 1$")
+plt.plot([pole1[0] , pole2[0]] , [pole1[1],pole2[1]] , 'rx' , label = "Poles of $H(z)$")
+plt.plot(zero[0] , zero[1] , 'ro' , label = "Zeroes of $H(z)$")
+plt.title("Pole-Zero Plot with ROC")
 plt.grid(True)
 plt.legend()
-
 plt.show()
-
-pole1 = [0.25,0]
-pole2 = [0.5 , 0]
-zero = [3/8,0]
-
-theta = np.linspace(0,2*np.pi , 1000)
-
-plt.plot(np.sin(theta), np.cos(theta) , 'k-' , label = "Unit Circle: $|z| = 1$")
-plt.plot([pole1[0] , pole2[0]] , [pole1[1],pole2[1]] , 'bx' , label = "Poles of $H(z)$")
-plt.plot(zero[0] , zero[1] , 'ro' , label = "Zeroes of $H(z)$")
-plt.grid(True)
-plt.legend(loc = 'lower left')
-plt.title("Pole-Zero Diagram for $H(z)")
-plt.show()
-
 
 X = np.arange(-10 , 10 , 1)
 
