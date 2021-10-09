@@ -279,9 +279,11 @@ Clearly, $g_1(t) = g(-t)$, and using \eqref{reverse}, we get:
     Also, $g_2(t) = g(-t-1)$. Thus, from \eqref{shift} and \eqref{reverse}, we get:
 
 \begin{align}
-   g_2(t) \fourier e^{-2\pi jf}G(-f) \\
-   g_2(t) \fourier \frac{1}{4\pi^2f^2}(e^{-4\pi jf} + 2\pi jf e^{-4\pi jf} - e^{-2\pi jf})\\
-   \implies G_2(\omega) = \frac{1}{4\pi^2f^2}(e^{-4\pi jf} + 2\pi jf e^{-4\pi jf} - e^{-2\pi jf})
+   g(t-1) \fourier e^{-2\pi jf}G(f)\\
+    g(-t-1) \fourier e^{2\pi jf} G(-f)\\
+    g_2(t) \fourier e^{2\pi jf}G(-f) \\
+   g_2(t) \fourier \frac{1}{4\pi^2f^2}(1 + 2\pi jf  - e^{2\pi jf})\\
+   \implies G_2(\omega) =  \frac{1}{4\pi^2f^2}(1 + 2\pi jf  - e^{2\pi jf})
 \end{align}
   \end{flushleft}
 \end{frame}
@@ -316,17 +318,24 @@ Clearly, $g_1(t) = g(-t)$, and using \eqref{reverse}, we get:
     \begin{flushleft}
 Also, $g_3(t) = g\brak{t - \frac{1}{2}} + g\brak{-t - \frac{1}{2}}$. Thus, 
 \begin{align}
-    g_3(t) \fourier e^{-j\pi f}\sbrak{G(f) + G(-f)}\\
-    G_3(f)= \frac{e^{-j\pi f}}{4\pi^2f^2}\sbrak{e^{2\pi jf} - 2\pi jfe^{2\pi jf} - 1  +
-    e^{-2\pi jf} + 2\pi jfe^{-2\pi jf} -1}\\
-        G_3(f) = \frac{e^{-j\pi f}}{4\pi^2f^2} \left[e^{2\pi jf} - 2\pi jfe^{2\pi jf}+\right. 
-        \left. e^{-2\pi jf} + 2\pi jfe^{-2\pi jf} -2 \right]
-  \end{align}
+    g_3(t) \fourier e^{-j\pi f}G(f) + e^{j\pi f}G(-f)\\
+    G_3(f)= \frac{e^{-j\pi f}}{4\pi^2f^2}\sbrak{e^{2\pi jf} - 2\pi jfe^{2\pi jf} - 1} + \\
+    \frac{e^{j\pi f}}{4\pi^2f^2}\sbrak{ e^{-2\pi jf} + 2\pi jfe^{-2\pi jf} -1}\\
+        G_3(f) = \frac{j}{2\pi f}\sbrak{e^{-\pi jf} - e^{\pi jf}}=\frac{\sin{\pi f}}{\pi f} = sinc(f)
+    \end{align}
+    where $sinc(t)$, the sampling function is defined as:
+\begin{align}
+    sinc(t) = 
+    \begin{cases}
+    1 & t = 0\\
+    \frac{\sin(\pi t)}{\pi t} & otherwise
+    \end{cases}
+\end{align}
     \end{flushleft}
 \end{frame}
 
 \begin{frame}
-  \frametitle{$g_2(t)$}
+  \frametitle{$g_3(t)$}
  \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{figure}
