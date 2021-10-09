@@ -281,9 +281,11 @@ Clearly, $g_1(t) = g(-t)$, and using \eqref{reverse}, we get:
 Also, $g_2(t) = g(-t-1)$. Thus, from \eqref{shift} and \eqref{reverse}, we get:
 
 \begin{align}
-   g_2(t) \fourier e^{-2\pi jf}G(-f) \\
-   g_2(t) \fourier \frac{1}{4\pi^2f^2}(e^{-4\pi jf} + 2\pi jf e^{-4\pi jf} - e^{-2\pi jf})\\
-   \implies G_2(\omega) = \frac{1}{4\pi^2f^2}(e^{-4\pi jf} + 2\pi jf e^{-4\pi jf} - e^{-2\pi jf})
+    g(t-1) \fourier e^{-2\pi jf}G(f)\\
+    g(-t-1) \fourier e^{2\pi jf} G(-f)\\
+    g_2(t) \fourier e^{2\pi jf}G(-f) \\
+   g_2(t) \fourier \frac{1}{4\pi^2f^2}(1 + 2\pi jf  - e^{2\pi jf})\\
+   \implies G_2(\omega) =  \frac{1}{4\pi^2f^2}(1 + 2\pi jf  - e^{2\pi jf})
 \end{align}
 
 
@@ -291,17 +293,26 @@ Also, $g_2(t) = g(-t-1)$. Thus, from \eqref{shift} and \eqref{reverse}, we get:
 
 Also, $g_3(t) = g\brak{t - \frac{1}{2}} + g\brak{-t - \frac{1}{2}}$. Thus, 
 \begin{align}
-    g_3(t) \fourier e^{-j\pi f}\sbrak{G(f) + G(-f)}
+    g\brak{t - \frac{1}{2}} \fourier e^{-j\pi f}G(f)\\
+    g\brak{-t-\frac{1}{2}} \fourier e^{j\pi f}G(-f)\\
+    g_3(t) \fourier e^{-j\pi f}G(f) + e^{j\pi f}G(-f)
     \end{align}
     \begin{multline}
     G_3(f)= \frac{e^{-j\pi f}}{4\pi^2f^2}\sbrak{e^{2\pi jf} - 2\pi jfe^{2\pi jf} - 1} + \\
-    \frac{e^{-j\pi f}}{4\pi^2f^2}\sbrak{ e^{-2\pi jf} + 2\pi jfe^{-2\pi jf} -1}\\
+    \frac{e^{j\pi f}}{4\pi^2f^2}\sbrak{ e^{-2\pi jf} + 2\pi jfe^{-2\pi jf} -1}\\
     \end{multline}
-    \begin{multline}
-        G_3(f) = \frac{e^{-j\pi f}}{4\pi^2f^2} \left[e^{2\pi jf} - 2\pi jfe^{2\pi jf}+\right. \\ 
-        \left. e^{-2\pi jf} + 2\pi jfe^{-2\pi jf} -2 \right]
-    \end{multline}
-    
+    \begin{align}
+        G_3(f) = \frac{j}{2\pi f}\sbrak{e^{-\pi jf} - e^{\pi jf}}\\
+        G_3(f) = \frac{\sin{\pi f}}{\pi f} = sinc(f)
+    \end{align}
+    where $sinc(t)$, the sampling function is defined as:
+\begin{align}
+    sinc(t) = 
+    \begin{cases}
+    1 & t = 0\\
+    \frac{\sin(\pi t)}{\pi t} & otherwise
+    \end{cases}
+\end{align}
 \begin{figure}[!ht]
 \centering
  \includegraphics[width=\columnwidth]{graphs/g.png}
