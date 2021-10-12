@@ -139,9 +139,9 @@ Download all latex codes from
 https://github.com/tanmaygoyal258/EE3900-Linear-Systems-and-Signal-processing/blob/main/GateAssignment4/main.tex
 \end{lstlisting}
 \section{Problem}
-(EC-2001/Q.16) The Fourier Transform $G(\omega)$ of the signal $g(t)$ is given by 
+(EC-2001/Q.16) The Fourier Transform $G(f)$ of the signal $g(t)$ is given by 
 \begin{align}
-    G(\omega) = \frac{1}{\omega^2}(e^{j\omega} - j\omega e^{j\omega} - 1)
+     G(f) = \frac{1}{4\pi^2 f^2}(e^{2\pi jf} - 2\pi jf e^{2\pi jf} -1)
 \end{align}
 Using this information, find the Fourier Transforms of the signals $g_1(t)$, $g_2(t)$ and $g_3(t)$.
 \begin{figure}[!ht]
@@ -149,11 +149,6 @@ Using this information, find the Fourier Transforms of the signals $g_1(t)$, $g_
  \includegraphics[width=\columnwidth]{Question.png}
 \end{figure}
 \section{Solution}
-We replace $\omega$ by $2\pi f$.
-Then, 
-\begin{align}
-    G(f) = \frac{1}{4\pi^2 f^2}(e^{2\pi jf} - 2\pi jf e^{2\pi jf} -1)
-\end{align}\\
 
 \begin{lemma}
 If 
