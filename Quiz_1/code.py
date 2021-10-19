@@ -7,8 +7,15 @@ angle = np.linspace(-np.pi , np.pi , 100)
 def phase(angle):
     res = []
     for omega in angle:
+        # to account for periodicity
+        if omega < -np.pi:
+            while(omega < -np.pi):
+                omega += 2*np.pi
+        if omega > np.pi:
+            while(omega > np.pi):
+                omega -= 2*np.pi
 
-        if omega > 0:
+        if omega > 0 :
             res.append( -omega/3 - np.pi/2)
         else:
             res.append(-omega/3 + np.pi/2)
@@ -34,5 +41,8 @@ plt.show()
 
 plt.plot(n,  np.cos(1.5* np.pi*n + np.pi/4 + phase([1.5*np.pi])) , 'r-')
 plt.title("$y[n]$")
+plt.plot(0, np.cos(11* np.pi/12) , 'bo' , label = "$(0 , \\cos(\\frac{11\\pi}{12}))$")
 plt.grid(True)
+plt.legend()
 plt.show()
+
